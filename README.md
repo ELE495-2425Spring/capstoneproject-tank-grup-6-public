@@ -9,18 +9,32 @@
 - [Acknowledgements](#acknowledgements)
 
 ## Introduction
-Provide a brief overview of the project, its purpose, and what problem it aims to solve.
+This project aims to enable an autonomous vehicle to detect the location of an antenna broadcasting on the 433MHz band with the help of YTR (Yet Another Tracking Receiver) and navigate towards it.
 
 ## Features
-List the key features and functionalities of the project.
-- Hardware: The hardware components used (should be listed with links)
-- Operating System and packages
-- Applications 
+- Autonomous Signal Tracking: The vehicle autonomously tracks the 433MHz signal using YTR and locates the antenna, stopping autonomously when it is within 70cm of the transmitter.
+- Real-time User Interface: A user interface displays the vehicle’s real-time heading, position, and signal strength (dB).
+- Time Efficiency: The vehicle reaches the transmitter's location within 2 minutes.
+## Hardware
+- Raspberry Pi 4 Model B, Arduino Nano, 433MHz Yagi-Uda Antenna, 433MHz Omnidirectional Antenna, RTL-SDR, SMA Connector, Coaxial Cable (50 Ohm), Li-ion Batteries (3 units), Power Bank (20W Output Power), Motor Driver (L298N), Car Kit, Accelerometer.
+- Raspberry Os
+## Applications:
+  - Autonomous Navigation: Can be used in autonomous vehicles or robots for precise navigation based on signal detection and tracking.
+  - Signal Detection and Localization: Ideal for applications in search and rescue, where finding a specific signal or transmitter is crucial.
+  -Wireless Communication Testing: Useful for testing and measuring signal strength in different environments for wireless communication systems.
+  -Antenna Positioning: Can be employed in antenna alignment and positioning applications to optimize signal reception or broadcasting.
 - Services 
 
 ## Installation
-Describe the steps required to install and set up the project. Include any prerequisites, dependencies, and commands needed to get the project running.
-
+- Install Raspberry Pi OS.
+- Assign pins for the motor driver and accelerometer on the Raspberry Pi.
+- Assemble the vehicle kit with Raspberry Pi, motor driver, accelerometer, and power bank.
+- Build a Yagi-Uda antenna suitable for 433MHz.
+- The dimensions of the Yagi-Uda antenna are provided in the image below.
+- Mount the antenna on the car’s top parallel to the ground. Solder one half of the dipole to the positive side of the coaxial cable and the other half to the ground side.
+- Install the Raspberry Pi RTL-SDR library and retrieve the algorithm from main.py.
+- Perform tests by transmitting on 433MHz using the Arduino Nano and the omnidirectional antenna.
+- Create the user interface.
 ```bash
 # Example commands
 git clone https://github.com/username/project-name.git
@@ -28,13 +42,34 @@ cd project-name
 ```
 
 ## Usage
-Provide instructions and examples on how to use the project. Include code snippets or screenshots where applicable.
+Install Required Libraries before running the project, make sure all necessary dependencies are installed on your Raspberry Pi. pyrtlsdr, smbus2, Rpi.GPIO.
+Connect the Raspberry Pi and motor driver to the vehicle kit.
+Assemble the Yagi-Uda antenna as per the provided dimensions.
+Ensure the 433MHz RTL-SDR is properly connected and configured.
+To start the tracking process, execute the main Python file:
 
+bash
+python main.py
+The vehicle will begin searching for the 433MHz signal. It will rotate 360 degrees, measuring signal strength and moving towards the direction of the highest signal.
+
+The real-time user interface will display on your Raspberry Pi screen, showing:
+
+Vehicle’s current position and heading.
+Signal strength (in dB).
+The vehicle will autonomously stop once it reaches within 70cm of the transmitter.
+
+If you need to stop the vehicle manually at any point, press CTRL+C in the terminal.
+
+If you wish to change the parameters (e.g., sample rate, gain, frequency), modify the config.py files in the respective directories (Navigator.py, Sdr_module.py).
 ## Screenshots
 Include screenshots of the project in action to give a visual representation of its functionality. You can also add videos of running project to YouTube and give a reference to it here. 
 
 ## Acknowledgements
-Give credit to those who have contributed to the project or provided inspiration. Include links to any resources or tools used in the project.
+Raspberry Pi Foundation, RTL-SDR Project, Yagi-Uda Antenna Design Resources, Open-Source Community. 
 
+https://www.raspberrypi.org/
+https://www.rtl-sdr.com/
+https://www.arduino.cc/
+https://en.wikipedia.org/wiki/Yagi-Uda_antenna
 [Contributor 1](https://github.com/user1)
 [Resource or Tool](https://www.nvidia.com)
