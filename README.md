@@ -64,13 +64,7 @@ If you need to stop the vehicle manually at any point, press CTRL+C in the termi
 If you wish to change the parameters (e.g., sample rate, gain, frequency), modify the config.py files in the respective directories (Navigator.py, Sdr_module.py).
 ## Screenshots
 ![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/5e7f2c10-e0e3-439f-9a9f-b5da68b84274)
-| Eleman   | Uzunluk (cm) | Mesafe (cm) |
-|----------|------------|-------------|
-| Reflektör (R) | 34.5 | 0 |
-| Dipol (A) | 33.5 | 13.5 |
-| Direktör 1 (D1) | 30.5 | 23.2 |
-| Direktör 2 (D2) | 30.5 | 36.7 |
-| Direktör 3 (D3) | 30.5 | 50.2 |
+
 
 ## Acknowledgements
 Raspberry Pi Foundation, RTL-SDR Project, Yagi-Uda Antenna Design Resources, Open-Source Community. 
