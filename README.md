@@ -39,11 +39,8 @@ This project aims to enable an autonomous vehicle to detect the location of an a
 - Install the Raspberry Pi RTL-SDR library and retrieve the algorithm from main.py.
 - Perform tests by transmitting on 433MHz using the Arduino Nano and the omnidirectional antenna.
 - Create the user interface.
-```bash
-# Example commands
-git clone https://github.com/username/project-name.git
-cd project-name
-```
+
+
 
 ## Usage
 Install Required Libraries before running the project, make sure all necessary dependencies are installed on your Raspberry Pi. pyrtlsdr, smbus2, Rpi.GPIO.
