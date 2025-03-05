@@ -27,7 +27,6 @@ This project aims to enable an autonomous vehicle to detect the location of an a
 - Custom Signal Tracking Solutions: Provide tailored signal tracking systems for various industries, including telecommunications and security.
 - Autonomous System Integration: Integrate autonomous vehicle control systems for navigation based on signal tracking for research or commercial applications.
 - Signal Strength Monitoring: Offer real-time monitoring services for signal strength measurement across large areas or specific zones.
-- Testing and Calibration: Provide services to test and calibrate wireless devices, antennas, and SDR systems to ensure optimal performance.
 
 ## Installation
 - Install Raspberry Pi OS.
