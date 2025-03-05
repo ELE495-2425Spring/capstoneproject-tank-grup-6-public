@@ -63,6 +63,7 @@ If you need to stop the vehicle manually at any point, press CTRL+C in the termi
 If you wish to change the parameters (e.g., sample rate, gain, frequency), modify the config.py files in the respective directories (Navigator.py, Sdr_module.py).
 ## Screenshots
 ![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/5e7f2c10-e0e3-439f-9a9f-b5da68b84274)
+![Autonomous Vehicle](https://github.com/user-attachments/assets/ad6ea461-2902-4fa9-b2d7-71d255719de8)
 
 
 ## Acknowledgements
@@ -130,6 +131,9 @@ Otonom Araç Yüksek olasılıkla vericinin bulunduğu konuma yüksek hassasiyet
 | Direktör 1 (D1) | 30.5 | 23.2 |
 | Direktör 2 (D2) | 30.5 | 36.7 |
 | Direktör 3 (D3) | 30.5 | 50.2 |
+
+![Otonom Araç](https://github.com/user-attachments/assets/cd0396ee-a67d-41e9-a427-5441765503e9)
+
 
 
 
