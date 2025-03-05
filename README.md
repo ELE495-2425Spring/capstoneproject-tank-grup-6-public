@@ -123,7 +123,8 @@ Otonom Araç Yüksek olasılıkla vericinin bulunduğu konuma yüksek hassasiyet
 
 **Yagi-Uda Antenin Ölçüleri**
 
-![Uploading YagiUda_Anten_433Mhz.png…]()
+![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/037a2c0a-eae1-4fe9-849e-5f266a87c8a6)
+
 
 
 | Eleman   | Uzunluk (cm) | Mesafe (cm) |
