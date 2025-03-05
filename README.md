@@ -71,9 +71,13 @@ Include screenshots of the project in action to give a visual representation of 
 ## Acknowledgements
 Raspberry Pi Foundation, RTL-SDR Project, Yagi-Uda Antenna Design Resources, Open-Source Community. 
 
-https://www.raspberrypi.org/
-https://www.rtl-sdr.com/
-https://www.arduino.cc/
-https://en.wikipedia.org/wiki/Yagi-Uda_antenna
-[Contributor 1](https://github.com/user1)
-[Resource or Tool](https://www.nvidia.com)
+[Resource]https://www.raspberrypi.org/  
+[Resource]https://www.rtl-sdr.com/  
+[Resource]https://www.arduino.cc/  
+[Resource]https://en.wikipedia.org/wiki/Yagi-Uda_antenna  
+[Contributor 1](https://github.com/(https://github.com/SirAlperen))
+[Contributor 2](https://github.com/user1)
+[Contributor 3](https://github.com/user1)
+[Contributor 4](https://github.com/user1)
+[Contributor 5](https://github.com/user1)
+
