@@ -75,7 +75,7 @@ Raspberry Pi Foundation, RTL-SDR Project, Yagi-Uda Antenna Design Resources, Ope
 [Resource]https://www.rtl-sdr.com/  
 [Resource]https://www.arduino.cc/  
 [Resource]https://en.wikipedia.org/wiki/Yagi-Uda_antenna  
-[Contributor 1](https://github.com/(https://github.com/SirAlperen))
+[Contributor 1](https://github.com/SirAlperen))
 [Contributor 2](https://github.com/user1)
 [Contributor 3](https://github.com/user1)
 [Contributor 4](https://github.com/user1)
