@@ -66,7 +66,14 @@ If you need to stop the vehicle manually at any point, press CTRL+C in the termi
 
 If you wish to change the parameters (e.g., sample rate, gain, frequency), modify the config.py files in the respective directories (Navigator.py, Sdr_module.py).
 ## Screenshots
-Include screenshots of the project in action to give a visual representation of its functionality. You can also add videos of running project to YouTube and give a reference to it here. 
+![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/5e7f2c10-e0e3-439f-9a9f-b5da68b84274)
+| Eleman   | Uzunluk (cm) | Mesafe (cm) |
+|----------|------------|-------------|
+| Reflektör (R) | 34.5 | 0 |
+| Dipol (A) | 33.5 | 13.5 |
+| Direktör 1 (D1) | 30.5 | 23.2 |
+| Direktör 2 (D2) | 30.5 | 36.7 |
+| Direktör 3 (D3) | 30.5 | 50.2 |
 
 ## Acknowledgements
 Raspberry Pi Foundation, RTL-SDR Project, Yagi-Uda Antenna Design Resources, Open-Source Community. 
@@ -75,9 +82,64 @@ Raspberry Pi Foundation, RTL-SDR Project, Yagi-Uda Antenna Design Resources, Ope
 [Resource]https://www.rtl-sdr.com/  
 [Resource]https://www.arduino.cc/  
 [Resource]https://en.wikipedia.org/wiki/Yagi-Uda_antenna  
-[Contributor 1](https://github.com/SirAlperen))
+[Contributor 1](https://github.com/SirAlperen)
 [Contributor 2](https://github.com/user1)
 [Contributor 3](https://github.com/user1)
 [Contributor 4](https://github.com/user1)
 [Contributor 5](https://github.com/user1)
+
+## TÜRKÇE 
+# Ele495-6 | Otonom Araba ile 433Mhz Anten Takibi
+Bu proje, otonom bir aracın YTR yardımıyla  433MHz bandında yayın yapan bir antenin konumunu tespit edip ona doğru yönlenmesini sağlamayı amaçlamaktadır.
+
+**Projedeki Hedefler**  
+- Aracın YTR kullanarak Otonom Şekilde 433Mhz'deki Sinyali Takip edip anteni bulması ve 70cm'den az yaklaştığında otonom şekilde durması.
+-  Kullanıcı arayüzünün oluşturulması ve bu arayüzde aracın anlık yön,konum ve sinyalin genliği(dB)'nin gösterilmesi.
+-   Araç Vericinin Konumuna 2 dakika içerisinde ulaşmalıdır.
+-   Tüm Malzemeler KDV dahil 10.000 TL'yi aşmamalıdır. 
+
+**Projenin donanım gereksinimleri**  
+Raspberry Pi 4 Model B, Arduino Nano, 433Mhz Yagi-Uda Anten, 433Mhz Yönsüz Anten, Rtl-Sdr, Sma Konnektör ve Koaksiyel kablo(50 Ohm), Li-ion pil(3 adet), Powerbank(20W Çıkış Güçlü), Motor Sürücü(L298N), Araba kiti, ivmeölçer.
+
+**Projenin Yapılması İçin İzlenmesi Gereken Adımlar**  
+- Raspberry Pi OS'in kurulması.  
+- Raspberry Pi üzerinden Motor sürücü ve ivmeölçer için pinlerin belirlenip atanması. 
+- Araç Kitinin, Raspberry Pi, Motor Sürücü, ivmeölçer ve powerbank ile birleştirilmesi.
+- 433Mhz'e uygun Yagi-Uda Antenin Yapılması.
+  - Yagi-Uda Anten için ölçüler aşağıdaki fotoğrafta belirtilmiştir.
+- Antenin Arabanın üstüne yere paralel şekilde montajlanması. Dipol kısmın yarısının koaksiyel kablonun + kısmına lehim yapılması, diğer yarısının koaksiyel kablonun toprak kısmına lehimlenmesi.
+- Raspberry Pi Rtl-Sdr Kütüphanesinin kurulması ve algoritmanın main.py'dan alınması.
+- Teslerin Yapılabilmesi için Ardino Nano ve Yönsüz anten kullanılarak  433Mhz'de Yayım yapılması.
+- Kullanıcı Arayüzünün Oluşturulması
+
+**Kodun Çalışma Mantığı**  
+Otonom Araba bulunduğu noktada 360 derece dönerek 433Mhz'de sinyalin gücünü her bir 30 derece için kaydediyor. 360 derece tamamlandıktan sonra sinyal gücünün en yüksek olduğu açıya dönüp belirli bir mesafe düz ilerliyor. Sonrasında üstteki adımı tekrarlayarak iki veya üç iterasyonda(Mesafeye bağlı olarak)) vericinin yanına 70cm'den kısa olacak şekilde ulaşıyor. 
+
+**Kodların Açıklanması**
+- ** Main.py :** Ana kontrol kodu. Programın ana döngüsünü içerir ve kullanılan fonksiyonlar burada tanımlı değil.
+- **Navigator.py  :** Aracın Yönlendirme Kodlarının Olduğu Dizin. Bu dizinde Aracın PID kontrol ile ileri,geri gitmesini ve istenilen açıda sağa ve sola dönmesini sağlayan fonksiyonlar bulunuyor. Bu Fonkisyonlar sağlanmasını sağlayan alt fonksiyonların bulunduğu dosyalar ise :
+  - config.py → Sensör ve motor pin konfigürasyonları
+  - gyro_sensor.py → İvmeölçer ve yön belirleme
+  - motor_controller.py → Motor sürücüyü kontrol etme
+  - pid_controller.py → PID algoritması ile hassas hareket kontrolü
+- **Sdr_module.py :** Yazılım Tabanlı Radyonun Kodlarının bulunduğu dizin. Bu dizinde Rtl-Sdr'ın aktif hale getirilmesi, istenilen frekansta istenilen örnekleme hızında ve istenilen kazanç değerinde sinyalin gücünün ölçülmesi sağlanıyor. Sinyalinin gücünü ölçerken Fast Fourier Transform kullanıldı. Bu dizin sayesinde Sinyalin Spekturumu elde edildi.
+  - signal_handler.py  Rtl-Sdr'dan alınan sinyalin işlenmesi
+  - config.py  Rtl-Sdr Spefikasyonlarının bulunduğu yer. Örnekleme Sayısı, Kazanç, Merkez Frekans değeri.
+
+**Sonuçlar**   
+Otonom Araç Yüksek olasılıkla vericinin bulunduğu konuma yüksek hassasiyetle ulaşabiliyor. Ancak Etrafta Bulunan yansıtıcı yüzeylerin bulunduğu kısımlarda olduğundan daha yüksek güçte ölçümler görüldü. Bu yüksek güçte ölçümler bazen yayım yapan antenin olduğu yönden bile daha fazla gözüktüğü için otonom arabanın yoldan saptığı senaryolar gözlemlendi. Aracın Vericinin yanına 70cm'den kısa mesafe yaklaştığında durması için bir eşik değeri atandı ve alınan sinyal gücü bu değere eşit veya yüksek olduğunda araç otonom olarak durarak bulma işlemini tamamlıyor. Ancak bazı senaryolarda okunan güç değeri beklenmeyen şekilde bazen artması bazen de azalması aracın uygun konumda duramadığı bazı senaryolar oluşturdu.
+
+**Yagi-Uda Antenin Ölçüleri**
+
+![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/5e7f2c10-e0e3-439f-9a9f-b5da68b84274)
+
+| Eleman   | Uzunluk (cm) | Mesafe (cm) |
+|----------|------------|-------------|
+| Reflektör (R) | 34.5 | 0 |
+| Dipol (A) | 33.5 | 13.5 |
+| Direktör 1 (D1) | 30.5 | 23.2 |
+| Direktör 2 (D2) | 30.5 | 36.7 |
+| Direktör 3 (D3) | 30.5 | 50.2 |
+
+
 
