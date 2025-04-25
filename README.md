@@ -44,8 +44,8 @@ Youtube Video Link : https://youtu.be/4y7KAGOcsKI
 
 
 ## Usage
-Install Required Libraries before running the project, make sure all necessary dependencies are installed on your Raspberry Pi. pyrtlsdr, smbus2, Rpi.GPIO.
-Connect the Raspberry Pi and motor driver to the vehicle kit.
+Install Required Libraries before running the project, make sure all necessary dependencies are installed on your Raspberry Pi. pyrtlsdr, smbus2, Rpi.GPIO, streamlit.
+Connect the Raspberry Pi and motor driver to the vehicle kit.(in araba_kontrol_pid.py)
 Assemble the Yagi-Uda antenna as per the provided dimensions.
 Ensure the 433MHz RTL-SDR is properly connected and configured.
 To start the tracking process, execute the main Python file:
@@ -56,11 +56,11 @@ The vehicle will begin searching for the 433MHz signal. It will rotate 360 degre
 
 The real-time user interface will display on your Raspberry Pi screen, showing:
 
-Vehicle’s current position and heading.
+Vehicle’s current position and heading and best angle.
 Signal strength (in dB).
-The vehicle will autonomously stop once it reaches within 70cm of the transmitter.
+The vehicle will autonomously stop once it reaches within 70cm of the transmitter and send to intefrace a message.
 
-If you need to stop the vehicle manually at any point, press CTRL+C in the terminal.
+If you need to stop the vehicle manually at any point, press CTRL+C in the terminal or in the interface press stop button.
 
 ## Yagi-Uda Antenna :
 
@@ -120,12 +120,12 @@ Raspberry Pi 4 Model B, Arduino Nano, 433Mhz Yagi-Uda Anten, 433Mhz Yönsüz Ant
 - Kullanıcı Arayüzünün Oluşturulması
 
 **Kodun Çalışma Mantığı**  
-Otonom Araba bulunduğu noktada 360 derece dönerek 433Mhz'de sinyalin gücünü her bir 30 derece için kaydediyor. 360 derece tamamlandıktan sonra sinyal gücünün en yüksek olduğu açıya dönüp belirli bir mesafe düz ilerliyor. Sonrasında üstteki adımı tekrarlayarak iki veya üç iterasyonda(Mesafeye bağlı olarak)) vericinin yanına 70cm'den kısa olacak şekilde ulaşıyor. 
+Otonom Araba bulunduğu noktada 360 derece dönerek 433Mhz'de sinyalin gücünü her bir 30 derece için kaydediyor. 360 derece tamamlandıktan sonra sinyal gücünün en yüksek olduğu açıya dönüp belirli bir mesafe düz ilerliyor. Sonrasında 180 derece açıyı tarayarak en yüksek yöne gidiyor bu adımı tekrarlayarak iki veya üç iterasyonda(Mesafeye bağlı olarak)) vericinin yanına 70cm'den kısa olacak şekilde ulaşıyor ve otonom olarak duruyor.
 
 **Kodların Açıklanması**
 - **main.py :** Ana kontrol kodu. Programın ana döngüsünü içerir ve kullanılan fonksiyonlar burada tanımlı değil.
 - **araba_kontrol_pid.py  :** Aracın Yönlendirme Kodlarının Olduğu Dizin. Bu dizinde Aracın PID kontrol ile ileri,geri gitmesini ve istenilen açıda sağa ve sola dönmesini sağlayan fonksiyonlar bulunuyor. Bu Fonkisyonlar sağlanmasını sağlayan alt fonksiyonların bulunduğu dosyalar ise :
-  - gyro_noth.py → İvmeölçer ve yön belirleme
+  - gyro_noth.py → İvmeölçer ve yön belirleme için kullanılıyor.
 - **signal_olcum.py :** Yazılım Tabanlı Radyonun Kodlarının bulunduğu dizin. Bu dizinde Rtl-Sdr'ın aktif hale getirilmesi, istenilen frekansta istenilen örnekleme hızında ve istenilen kazanç değerinde sinyalin gücünün ölçülmesi sağlanıyor. Sinyalinin gücünü ölçerken Fast Fourier Transform kullanıldı. Bu dizin sayesinde Sinyalin Spekturumu elde edildi.
 
 **Sonuçlar**   
