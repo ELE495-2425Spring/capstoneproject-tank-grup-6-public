@@ -49,7 +49,7 @@ Ensure the 433MHz RTL-SDR is properly connected and configured.
 To start the tracking process, execute the main Python file:
 
 bash
-python main.py
+streamlit run main.py
 The vehicle will begin searching for the 433MHz signal. It will rotate 360 degrees, measuring signal strength and moving towards the direction of the highest signal.
 
 The real-time user interface will display on your Raspberry Pi screen, showing:
@@ -108,15 +108,10 @@ Raspberry Pi 4 Model B, Arduino Nano, 433Mhz Yagi-Uda Anten, 433Mhz Yönsüz Ant
 Otonom Araba bulunduğu noktada 360 derece dönerek 433Mhz'de sinyalin gücünü her bir 30 derece için kaydediyor. 360 derece tamamlandıktan sonra sinyal gücünün en yüksek olduğu açıya dönüp belirli bir mesafe düz ilerliyor. Sonrasında üstteki adımı tekrarlayarak iki veya üç iterasyonda(Mesafeye bağlı olarak)) vericinin yanına 70cm'den kısa olacak şekilde ulaşıyor. 
 
 **Kodların Açıklanması**
-- ** Main.py :** Ana kontrol kodu. Programın ana döngüsünü içerir ve kullanılan fonksiyonlar burada tanımlı değil.
-- **Navigator.py  :** Aracın Yönlendirme Kodlarının Olduğu Dizin. Bu dizinde Aracın PID kontrol ile ileri,geri gitmesini ve istenilen açıda sağa ve sola dönmesini sağlayan fonksiyonlar bulunuyor. Bu Fonkisyonlar sağlanmasını sağlayan alt fonksiyonların bulunduğu dosyalar ise :
-  - config.py → Sensör ve motor pin konfigürasyonları
-  - gyro_sensor.py → İvmeölçer ve yön belirleme
-  - motor_controller.py → Motor sürücüyü kontrol etme
-  - pid_controller.py → PID algoritması ile hassas hareket kontrolü
-- **Sdr_module.py :** Yazılım Tabanlı Radyonun Kodlarının bulunduğu dizin. Bu dizinde Rtl-Sdr'ın aktif hale getirilmesi, istenilen frekansta istenilen örnekleme hızında ve istenilen kazanç değerinde sinyalin gücünün ölçülmesi sağlanıyor. Sinyalinin gücünü ölçerken Fast Fourier Transform kullanıldı. Bu dizin sayesinde Sinyalin Spekturumu elde edildi.
-  - signal_handler.py  Rtl-Sdr'dan alınan sinyalin işlenmesi
-  - config.py  Rtl-Sdr Spefikasyonlarının bulunduğu yer. Örnekleme Sayısı, Kazanç, Merkez Frekans değeri.
+- **main.py :** Ana kontrol kodu. Programın ana döngüsünü içerir ve kullanılan fonksiyonlar burada tanımlı değil.
+- **araba_kontrol_pid.py  :** Aracın Yönlendirme Kodlarının Olduğu Dizin. Bu dizinde Aracın PID kontrol ile ileri,geri gitmesini ve istenilen açıda sağa ve sola dönmesini sağlayan fonksiyonlar bulunuyor. Bu Fonkisyonlar sağlanmasını sağlayan alt fonksiyonların bulunduğu dosyalar ise :
+  - gyro_noth.py → İvmeölçer ve yön belirleme
+- **signal_olcum.py :** Yazılım Tabanlı Radyonun Kodlarının bulunduğu dizin. Bu dizinde Rtl-Sdr'ın aktif hale getirilmesi, istenilen frekansta istenilen örnekleme hızında ve istenilen kazanç değerinde sinyalin gücünün ölçülmesi sağlanıyor. Sinyalinin gücünü ölçerken Fast Fourier Transform kullanıldı. Bu dizin sayesinde Sinyalin Spekturumu elde edildi.
 
 **Sonuçlar**   
 Otonom Araç Yüksek olasılıkla vericinin bulunduğu konuma yüksek hassasiyetle ulaşabiliyor. Ancak Etrafta Bulunan yansıtıcı yüzeylerin bulunduğu kısımlarda olduğundan daha yüksek güçte ölçümler görüldü. Bu yüksek güçte ölçümler bazen yayım yapan antenin olduğu yönden bile daha fazla gözüktüğü için otonom arabanın yoldan saptığı senaryolar gözlemlendi. Aracın Vericinin yanına 70cm'den kısa mesafe yaklaştığında durması için bir eşik değeri atandı ve alınan sinyal gücü bu değere eşit veya yüksek olduğunda araç otonom olarak durarak bulma işlemini tamamlıyor. Ancak bazı senaryolarda okunan güç değeri beklenmeyen şekilde bazen artması bazen de azalması aracın uygun konumda duramadığı bazı senaryolar oluşturdu.
