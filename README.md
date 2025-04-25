@@ -60,7 +60,17 @@ The vehicle will autonomously stop once it reaches within 70cm of the transmitte
 
 If you need to stop the vehicle manually at any point, press CTRL+C in the terminal.
 
-If you wish to change the parameters (e.g., sample rate, gain, frequency), modify the config.py files in the respective directories (Navigator.py, Sdr_module.py).
+## Yagi-Uda Antenna :
+
+
+| Parts   | Length (cm) | Distance (cm) |
+|----------|------------|-------------|
+| Reflector (R) | 34.5 | 0 |
+| Dipol (A) | 33.5 | 13.5 |
+| Director 1 (D1) | 30.5 | 23.2 |
+| Director 2 (D2) | 30.5 | 36.7 |
+| Director 3 (D3) | 30.5 | 50.2 |
+
 ## Screenshots
 ![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/a31aa550-d301-43c3-aeca-83812927e940)
  
@@ -117,23 +127,11 @@ Otonom Araba bulunduğu noktada 360 derece dönerek 433Mhz'de sinyalin gücünü
 - **signal_olcum.py :** Yazılım Tabanlı Radyonun Kodlarının bulunduğu dizin. Bu dizinde Rtl-Sdr'ın aktif hale getirilmesi, istenilen frekansta istenilen örnekleme hızında ve istenilen kazanç değerinde sinyalin gücünün ölçülmesi sağlanıyor. Sinyalinin gücünü ölçerken Fast Fourier Transform kullanıldı. Bu dizin sayesinde Sinyalin Spekturumu elde edildi.
 
 **Sonuçlar**   
-Otonom Araç Yüksek olasılıkla vericinin bulunduğu konuma yüksek hassasiyetle ulaşabiliyor. Ancak Etrafta Bulunan yansıtıcı yüzeylerin bulunduğu kısımlarda olduğundan daha yüksek güçte ölçümler görüldü. Bu yüksek güçte ölçümler bazen yayım yapan antenin olduğu yönden bile daha fazla gözüktüğü için otonom arabanın yoldan saptığı senaryolar gözlemlendi. Aracın Vericinin yanına 70cm'den kısa mesafe yaklaştığında durması için bir eşik değeri atandı ve alınan sinyal gücü bu değere eşit veya yüksek olduğunda araç otonom olarak durarak bulma işlemini tamamlıyor. Ancak bazı senaryolarda okunan güç değeri beklenmeyen şekilde bazen artması bazen de azalması aracın uygun konumda duramadığı bazı senaryolar oluşturdu.
-
-**Yagi-Uda Antenin Ölçüleri**
-
-![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/037a2c0a-eae1-4fe9-849e-5f266a87c8a6)
+Otonom Araç Yüksek olasılıkla vericinin bulunduğu konuma yüksek hassasiyetle ulaşabiliyor. Ancak Etrafta Bulunan yansıtıcı yüzeylerin bulunduğu bazı kısımlarda olduğundan daha yüksek güçte ölçümler görüldü. Bu yüksek güçte ölçümler bazen yayım yapan antenin olduğu yönden bile daha fazla gözüktüğü için otonom arabanın yoldan saptığı senaryolar gözlemlendi. Aracın Vericinin yanına 70cm'den kısa mesafe yaklaştığında durması için bir eşik değeri atandı ve alınan sinyal gücü bu değere eşit veya yüksek olduğunda araç otonom olarak durarak bulma işlemini tamamlıyor.
 
 
 
-| Eleman   | Uzunluk (cm) | Mesafe (cm) |
-|----------|------------|-------------|
-| Reflektör (R) | 34.5 | 0 |
-| Dipol (A) | 33.5 | 13.5 |
-| Direktör 1 (D1) | 30.5 | 23.2 |
-| Direktör 2 (D2) | 30.5 | 36.7 |
-| Direktör 3 (D3) | 30.5 | 50.2 |
 
-![Otonom Araç](https://github.com/user-attachments/assets/cd0396ee-a67d-41e9-a427-5441765503e9)
 
 
 
