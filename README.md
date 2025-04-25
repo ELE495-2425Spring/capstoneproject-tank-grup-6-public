@@ -64,7 +64,10 @@ If you wish to change the parameters (e.g., sample rate, gain, frequency), modif
 ## Screenshots
 ![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/a31aa550-d301-43c3-aeca-83812927e940)
  
-![Autonomous Vehicle](https://github.com/user-attachments/assets/ad6ea461-2902-4fa9-b2d7-71d255719de8)
+![Autonomous Car](https://github.com/user-attachments/assets/ea91f331-1156-4ede-abb7-06f21883966d)
+
+![Graphical User Interface](https://github.com/user-attachments/assets/e4eafbe1-51f7-4bac-aa9a-7461e6b8b237)
+
 
 
 ## Acknowledgements
