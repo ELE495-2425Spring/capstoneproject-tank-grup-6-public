@@ -74,11 +74,11 @@ If you need to stop the vehicle manually at any point, press CTRL+C in the termi
 | Director 3 (D3) | 30.5 | 50.2 |
 
 ## Screenshots
-![YagiUda_Anten_433Mhz](https://github.com/user-attachments/assets/a31aa550-d301-43c3-aeca-83812927e940)
+![YagiUda_Anten_433Mhz](grup-6-antenna.png)
  
-![Autonomous Car](https://github.com/user-attachments/assets/ea91f331-1156-4ede-abb7-06f21883966d)
+![Autonomous Car](grup-6-car.png)
 
-![Graphical User Interface](https://github.com/user-attachments/assets/e4eafbe1-51f7-4bac-aa9a-7461e6b8b237)
+![Graphical User Interface](grup-6-app.png)
 
 
 
